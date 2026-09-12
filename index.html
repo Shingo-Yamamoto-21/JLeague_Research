@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <title>J1監督評価レポート｜2026/27シーズン（2026-09-12時点）</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222c;
+      --surface2: #232d3a;
+      --border: #2e3a4a;
+      --text: #e8edf4;
+      --muted: #93a0b2;
+      --accent: #3dd6c6;
+      --accent2: #f0a05a;
+      --good: #4ade80;
+      --mid: #fbbf24;
+      --low: #f87171;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 0 16px 80px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 700; margin-bottom: 12px; }
+    .lead { color: var(--muted); font-size: .95rem; max-width: 720px; }
+    .note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    p, li { font-size: .92rem; }
+    .axes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+    .axis-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+    .axis-card strong { color: var(--accent); display: block; margin-bottom: 4px; }
+    .axis-card span { color: var(--muted); font-size: .85rem; }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .85rem;
+      min-width: 760px;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      white-space: nowrap;
+    }
+    tr:hover td { background: rgba(61, 214, 198, .05); }
+    .score {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+    .s3 { background: rgba(74, 222, 128, .2); color: var(--good); }
+    .s2 { background: rgba(251, 191, 36, .2); color: var(--mid); }
+    .s1 { background: rgba(248, 113, 113, .2); color: var(--low); }
+    .total {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .rank {
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      width: 36px;
+    }
+    .club { font-weight: 600; white-space: nowrap; }
+    .coach { white-space: nowrap; }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .filters button {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-size: .8rem;
+    }
+    .filters button.active, .filters button:hover {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .cards {
+      display: grid;
+      gap: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .card-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .card-meta { color: var(--muted); font-size: .8rem; margin-top: 4px; }
+    .score-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: .75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-label {
+      font-size: .75rem;
+      letter-spacing: .06em;
+      color: var(--accent);
+      margin: 14px 0 6px;
+      text-transform: uppercase;
+    }
+    .comment {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 12px;
+      font-size: .9rem;
+      border: 1px solid var(--border);
+    }
+    .propose {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .propose ol { margin-left: 1.2em; }
+    .propose li { margin-bottom: 10px; }
+    .propose li strong { color: var(--accent2); }
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">NOINDEX / PRIVATE RESEARCH</div>
+      <h1>J1リーグ 2026/27シーズン<br>監督評価レポート</h1>
+      <p class="lead">
+        評価時点：2026年9月12日（第6〜7節消化中）。J1全20クラブの監督について、キャリア・チームスタイルを整理し、4評価軸を1〜3点で判定した個人調査です。
+      </p>
+      <div class="note">
+        ※本ページは検索エンジンにインデックスされないよう <code>noindex, nofollow</code> を設定しています。公開情報に基づく主観評価であり、公式ランキングではありません。
+      </div>
+    </header>
+
+    <section>
+      <h2>評価軸の定義</h2>
+      <div class="axes">
+        <div class="axis-card">
+          <strong>監督経験</strong>
+          <span>トップチーム監督としての経験値・在任年数・キャリアの厚み（1=浅め／3=豊富）</span>
+        </div>
+        <div class="axis-card">
+          <strong>監督実績</strong>
+          <span>リーグ優勝・カップ優勝・昇格・国際大会などのタイトル実績（1=乏しい／3=豊富）</span>
+        </div>
+        <div class="axis-card">
+          <strong>チームスタイル</strong>
+          <span>戦術思想の一貫性・言語化・再現性（1=揺らぎ大／3=明確で一貫）</span>
+        </div>
+        <div class="axis-card">
+          <strong>成長性</strong>
+          <span>直近1〜2年の実績・評価の上昇度（1=下降／停滞、3=明確に上昇）</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>総合ランキング（合計点順）</h2>
+      <div class="table-wrap">
+        <table id="rankTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>クラブ</th>
+              <th>監督</th>
+              <th>経験</th>
+              <th>実績</th>
+              <th>スタイル</th>
+              <th>成長性</th>
+              <th>合計</th>
+              <th>序盤順位*</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- filled by JS from data -->
+          </tbody>
+        </table>
+      </div>
+      <p style="color:var(--muted);font-size:.8rem;">*2026/27シーズン序盤（2026-09-12前後）のリーグ順位。試合消化数はクラブにより差あり。</p>
+    </section>
+
+    <section>
+      <h2>クラブ別詳細</h2>
+      <div class="filters" id="filters">
+        <button class="active" data-filter="all">すべて</button>
+        <button data-filter="high">合計10〜12</button>
+        <button data-filter="mid">合計7〜9</button>
+        <button data-filter="low">合計4〜6</button>
+      </div>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section>
+      <h2>追加すべき評価軸の提案</h2>
+      <div class="propose">
+        <p style="margin-bottom:12px;color:var(--muted);">今回の4軸に加え、導入判断や補強方針に効きやすい観点です。</p>
+        <ol>
+          <li><strong>選手育成・若手登用</strong> — 平均出場年齢、下部組織・新人の起用、コンバートでの開花など。中長期のクラブ資産形成に直結。</li>
+          <li><strong>適応力・可変性</strong> — 相手・戦力・連戦に応じた布陣変更や試合中修正。スタイル一貫性とは別軸で「勝つための柔軟さ」を測る。</li>
+          <li><strong>セットプレー設計力</strong> — 得点・失点に占めるSP比率。少人数クラブほど成果が出やすい実務指標。</li>
+          <li><strong>組織・ロッカールーム運営</strong> — 規律、信頼、コンプライアンス、退任・処分歴。大型クラブほど重要度が高い。</li>
+          <li><strong>国際大会対応力</strong> — ACL/ACLEでの戦績・連戦マネジメント。秋春制移行後は特に価値が増す。</li>
+          <li><strong>フィジカル＆負荷管理</strong> — 負傷者数、終盤失点、夏場のスタミナ。シーズン長期化で差が出やすい。</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      <p>作成：個人調査（Cursor）／評価時点：2026-09-12／対象：明治安田J1リーグ 2026/27シーズン全20クラブ監督</p>
+      <p>主な参照：Jリーグ公式・各クラブ公式発表・J.League Data Site・報道各社。数値評価は調査者の総合判断。</p>
+    </footer>
+  </div>
+
+  <script>
+    const coaches = [
+      {
+        club: "鹿島アントラーズ", coach: "鬼木 達", age: 52, nation: "日本",
+        exp: 3, title: 3, style: 3, growth: 2, standings: 7,
+        career: "川崎Fで長期政権（2017-24）を築きJ1を4度制覇。2025年から鹿島を率い、就任1年目でリーグ優勝。2クラブでのJ1制覇は史上初。",
+        tactics: "基本4-4-2。ポゼッションとダイレクト、ハイプレスとローブロックを使い分ける可変性の高さが特徴。非保持はコンパクトな4-4-2ブロック。",
+        comment: "タイトル実績はリーグ屈指。2026/27は開幕4連勝後に3連敗と波があるが、立て直し実績は豊富。経験・実績・スタイルの三拍子が揃う安定型。"
+      },
+      {
+        club: "水戸ホーリーホック", coach: "樹森 大介", age: 49, nation: "日本",
+        exp: 1, title: 1, style: 2, growth: 3, standings: 11,
+        career: "水戸ユース〜コーチを経て、2025年に新潟監督（途中解任）。2026年から母校的クラブ水戸で初のJ1挑戦を指揮。",
+        tactics: "合言葉は「圧倒的プレス」。4-4-2基調でアグレッシブな前から奪うサッカー。最終ラインからのビルドアップも志向。",
+        comment: "タイトルは未経験だが、昇格クラブとして鹿島撃破など存在感。新潟失敗を糧に水戸で評価を上げており、成長性は高い。"
+      },
+      {
+        club: "浦和レッズ", coach: "曺 貴裁", age: 57, nation: "韓国",
+        exp: 3, title: 2, style: 3, growth: 2, standings: 12,
+        career: "湘南でJ2優勝・昇格を繰り返し、京都を2025年クラブ史上最高の3位へ。2026/27から古巣浦和を指揮。",
+        tactics: "アグレッシブな縦推進・即時奪回・インテンシティが軸。浦和では4-1-2-3から3-4-2-1への可変も試行。",
+        comment: "スタイルの一貫性は高い。開幕3連敗から3連勝へ立て直した修正力は評価できる。タイトルはカップ・昇格中心でJ1優勝は未達。"
+      },
+      {
+        club: "ジェフユナイテッド千葉", coach: "小林 慶行", age: 48, nation: "日本",
+        exp: 2, title: 1, style: 2, growth: 1, standings: 20,
+        career: "2023年から千葉監督。2025年に昇格POを制し17年ぶりJ1復帰を達成。体制4年目。",
+        tactics: "ハイプレスとボール保持の「強者のサッカー」。J2時代の4-4-2を基に、J1では3バックも併用して模索中。",
+        comment: "昇格は大きな功績だが、特別シーズン最下位〜2026/27も苦戦。スタイルの求心力はある一方、J1適応が成長性の評価を押し下げている。"
+      },
+      {
+        club: "柏レイソル", coach: "リカルド・ロドリゲス", age: 52, nation: "スペイン",
+        exp: 3, title: 2, style: 3, growth: 3, standings: 3,
+        career: "徳島でJ2優勝、浦和で天皇杯・ACL決勝進出、2025年柏でJ1準優勝。指導者専業キャリア。",
+        tactics: "ポジショナルプレー基盤のボール保持。3-4-2-1を軸に可変。平均支配率リーグ上位、GKをビルドアップに組み込む。",
+        comment: "現時点で最も「勝ちながら自分の色を出せている」監督の一人。実績も成長性も高く、総合トップクラス。"
+      },
+      {
+        club: "FC東京", coach: "松橋 力蔵", age: 58, nation: "日本",
+        exp: 2, title: 1, style: 3, growth: 3, standings: 5,
+        career: "新潟でJ2優勝・J1定着を経験し、2025年からFC東京。特別シーズン最終4位と評価を上げた。",
+        tactics: "4-4-2基調の丁寧なビルドアップとカウンタープレス。「変えるぐらいなら辞める」と言えるほどスタイル一貫。",
+        comment: "主要タイトルはまだ少ないが、思想の再現性と直近の上昇曲線が強い。上位定着〜タイトル挑戦のフェーズに入っている。"
+      },
+      {
+        club: "東京ヴェルディ", coach: "城福 浩", age: 65, nation: "日本",
+        exp: 3, title: 2, style: 3, growth: 1, standings: 19,
+        career: "FC東京・甲府・広島・東京Vと長期キャリア。2023年に東京VをJ1復帰、2024年は6位と躍進。",
+        tactics: "3-4-2-1とハードワーク。前線守備＋ミドルブロック、奪取後の前向きな運びが基準。育成志向も強い。",
+        comment: "経験とスタイルは一級品だが、2025年17位→2026/27未勝利圏と成長性は明確に下降。立て直しが急務。"
+      },
+      {
+        club: "FC町田ゼルビア", coach: "黒田 剛", age: 56, nation: "日本",
+        exp: 2, title: 2, style: 3, growth: 3, standings: 1,
+        career: "青森山田で高校サッカーを制覇後、町田でJ2優勝→J1 3位→天皇杯優勝・ACLE準優勝。",
+        tactics: "堅守速攻とセットプレーが土台。近年はミドルブロック併用や攻撃多様化へ進化。「防衛的悲観主義」とも評される。",
+        comment: "プロ監督歴は短いが結果は圧倒的。序盤首位・無敗は成長性の裏付け。規律面の過去処分は留意点。"
+      },
+      {
+        club: "川崎フロンターレ", coach: "長谷部 茂利", age: 55, nation: "日本",
+        exp: 3, title: 2, style: 2, growth: 2, standings: 6,
+        career: "福岡でルヴァン優勝・J1定着を実現し、2025年から川崎。ACLE準優勝がキャリアハイライト。",
+        tactics: "4-4-2非保持ブロックと高強度。川崎ではクラブの攻撃文化との融合を進め、ポゼッション寄りへ歩み寄り中。",
+        comment: "実績はあるがスタイルは移行期。リーグ成績とアジア成績のギャップをどう埋めるかが次の評価ポイント。"
+      },
+      {
+        club: "横浜F・マリノス", coach: "スティーブ・コリカ", age: 53, nation: "オーストラリア",
+        exp: 3, title: 2, style: 2, growth: 2, standings: 7,
+        career: "シドニーFC・オークランドFCでAリーグ複数タイトル。2026年7月、大島監督解任後にマリノス就任。",
+        tactics: "4-4-2基調の現実主義。守備ブロックと効率的な前進。マリノスでは失点抑制を最優先に整備中。",
+        comment: "海外実績は十分。日本適応は序盤合格点だが、クラブの攻撃DNAとの両立が中期の焦点。"
+      },
+      {
+        club: "清水エスパルス", coach: "吉田 孝行", age: 49, nation: "日本",
+        exp: 2, title: 3, style: 2, growth: 1, standings: 17,
+        career: "神戸でJ1連覇＋天皇杯の国内2冠を達成。2026年から清水を指揮。",
+        tactics: "4-3-3、高いラインとコンパクト守備。「タフにアグレッシブに」が口癖の勝負師タイプ。",
+        comment: "実績は最高水準。一方で清水では得点力不足が続き、成長性は下降局面。神戸での勝ち方の再現が問われる。"
+      },
+      {
+        club: "名古屋グランパス", coach: "ミハイロ・ペトロヴィッチ", age: 68, nation: "オーストリア",
+        exp: 3, title: 2, style: 3, growth: 1, standings: 14,
+        career: "広島・浦和・札幌で長期指揮。「ミシャ式」の伝道者。2026年から名古屋。",
+        tactics: "3-4-2-1可変DFライン、極端な縦志向とマンオリエンテッド守備。20年近くほぼ崩さない一貫性。",
+        comment: "スタイル評価は満点級。ただし序盤は決定力・失点管理に苦しみ成長性は低い。浸透までの時間との勝負。"
+      },
+      {
+        club: "京都サンガF.C.", coach: "ランコ・ポポヴィッチ", age: 59, nation: "セルビア／オーストリア",
+        exp: 3, title: 1, style: 2, growth: 1, standings: 15,
+        career: "町田・FC東京・鹿島など国内外を渡り歩く。2026/27から京都（曺貴裁後任）。",
+        tactics: "インテンシティと創造性、2ボランチ重視。コンバートによる才能開花に定評。一方で失速・混乱の指摘も。",
+        comment: "経験は豊富だが主要タイトルは乏しく、京都では解任論も報じられた下降局面。ACLE任務との両立が重い。"
+      },
+      {
+        club: "ガンバ大阪", coach: "明神 智和", age: 48, nation: "日本",
+        exp: 1, title: 1, style: 1, growth: 1, standings: 13,
+        career: "下部組織コーチから、ヴィッシング電撃退任を受け2026年7月に緊急昇格。トップ監督は初。",
+        tactics: "前任の「前に早く・前から奪う」を継承。独自色の言語化はまだ途上。",
+        comment: "ACLE突破など瞬間の結果はあるが、経験・実績・スタイル・成長性いずれも発展途上。時間とサポートが必要。"
+      },
+      {
+        club: "セレッソ大阪", coach: "パブロ・マチン", age: 51, nation: "スペイン",
+        exp: 3, title: 1, style: 3, growth: 2, standings: 9,
+        career: "ジローナを初のラ・リーガ昇格へ導いた3バック信奉者。2026/27からC大阪（日本初挑戦）。",
+        tactics: "3-5-2／3-4-2-1。攻撃的WBと堅い3CB。システムよりアイデアを重視しつつ3バックは一貫。",
+        comment: "スタイルの芯は明確。タイトルは昇格中心で大手クラブ優勝経験は少ない。日本適応の途上だが骨格は作れつつある。"
+      },
+      {
+        club: "ヴィッセル神戸", coach: "ミヒャエル・スキッベ", age: 61, nation: "ドイツ",
+        exp: 3, title: 2, style: 3, growth: 3, standings: 2,
+        career: "欧州・ギリシャ代表・広島を経て2026年神戸。広島でルヴァン2度、神戸で百年構想リーグ優勝。",
+        tactics: "3-4-2-1／3-5-2、ハイプレスとゲーゲンプレス。厚みのある攻撃と切り替えの速さ。",
+        comment: "就任即タイトル＆2026/27も上位。経験・スタイル・直近成長が揃う。リーグ優勝への仕上げが次の評価点。"
+      },
+      {
+        club: "ファジアーノ岡山", coach: "木山 隆之", age: 54, nation: "日本",
+        exp: 3, title: 1, style: 2, growth: 2, standings: 9,
+        career: "水戸・千葉・愛媛・山形・仙台などを経て岡山でJ1初昇格（2024）。読みは「きやま たかし」。",
+        tactics: "固定布陣に固執せず噛み合わせで可変。前からの圧力と球際強度、奪って素早い前進が基準。",
+        comment: "経験値は高いがメジャータイトルは未取得。昇格後の残留〜中位安定は評価できる堅実型。"
+      },
+      {
+        club: "サンフレッチェ広島", coach: "バルトシュ・ガウル", age: 38, nation: "ドイツ／ポーランド",
+        exp: 2, title: 1, style: 2, growth: 3, standings: 4,
+        career: "シャルケ・マインツ育成、ポーランド1部監督、ライプツィヒACを経て2026年広島監督（外部招聘）。",
+        tactics: "高エネルギー＋ボールコントロール。3バックと攻撃的WB、ハイプレス。育成と結果の両立を掲げる。",
+        comment: "トップ監督実績はまだ薄いが、特別シーズン終盤〜2026/27序盤の上昇は鮮明。成長性評価の筆頭格の一人。"
+      },
+      {
+        club: "アビスパ福岡", coach: "塚原 真也", age: 41, nation: "日本",
+        exp: 1, title: 1, style: 2, growth: 1, standings: 18,
+        career: "FC大阪でJ3昇格後、福岡コーチ→HC→暫定監督を経て2026/27に正式監督。内部昇格。",
+        tactics: "金体制の堅守を継承しつつ得点力改善が課題。縦に速い攻撃と最終局面の質を重視。",
+        comment: "J1監督としては経験・実績とも不足。特別シーズン下位〜今季も苦戦で、成長曲線はまだ見えない。"
+      },
+      {
+        club: "V・ファーレン長崎", coach: "高木 琢也", age: 58, nation: "日本",
+        exp: 3, title: 2, style: 2, growth: 2, standings: 14,
+        career: "横浜FCでJ2優勝、長崎を2度J1へ導く。2025年再就任で8年ぶり昇格を達成。",
+        tactics: "ハードワーク＝ディープワーク。守備強度を土台にカウンター／個の速攻を残す状況対応型。",
+        comment: "昇格請負人としての実績は明確。J1定着・スタイル洗練が次の段階で、序盤は失点過多が課題。"
+      }
+    ];
+
+    function scoreClass(n) { return `score s${n}`; }
+
+    function renderTable() {
+      const sorted = [...coaches].sort((a, b) => {
+        const ta = a.exp + a.title + a.style + a.growth;
+        const tb = b.exp + b.title + b.style + b.growth;
+        if (tb !== ta) return tb - ta;
+        return a.standings - b.standings;
+      });
+      const tbody = document.querySelector("#rankTable tbody");
+      tbody.innerHTML = sorted.map((c, i) => {
+        const total = c.exp + c.title + c.style + c.growth;
+        return `<tr>
+          <td class="rank">${i + 1}</td>
+          <td class="club">${c.club}</td>
+          <td class="coach">${c.coach}</td>
+          <td><span class="${scoreClass(c.exp)}">${c.exp}</span></td>
+          <td><span class="${scoreClass(c.title)}">${c.title}</span></td>
+          <td><span class="${scoreClass(c.style)}">${c.style}</span></td>
+          <td><span class="${scoreClass(c.growth)}">${c.growth}</span></td>
+          <td class="total">${total}</td>
+          <td>${c.standings}位</td>
+        </tr>`;
+      }).join("");
+    }
+
+    function renderCards(filter = "all") {
+      const sorted = [...coaches].sort((a, b) => {
+        const ta = a.exp + a.title + a.style + a.growth;
+        const tb = b.exp + b.title + b.style + b.growth;
+        return tb - ta || a.standings - b.standings;
+      });
+      const cards = document.getElementById("cards");
+      cards.innerHTML = sorted.filter(c => {
+        const t = c.exp + c.title + c.style + c.growth;
+        if (filter === "high") return t >= 10;
+        if (filter === "mid") return t >= 7 && t <= 9;
+        if (filter === "low") return t <= 6;
+        return true;
+      }).map(c => {
+        const total = c.exp + c.title + c.style + c.growth;
+        return `<article class="card" data-total="${total}">
+          <div class="card-head">
+            <div>
+              <h3>${c.club} ｜ ${c.coach}</h3>
+              <div class="card-meta">${c.age}歳・${c.nation} ／ 2026/27序盤 ${c.standings}位 ／ 合計 <strong style="color:var(--accent)">${total}</strong></div>
+            </div>
+            <div class="score-row">
+              <div class="pill">経験 <span class="${scoreClass(c.exp)}">${c.exp}</span></div>
+              <div class="pill">実績 <span class="${scoreClass(c.title)}">${c.title}</span></div>
+              <div class="pill">スタイル <span class="${scoreClass(c.style)}">${c.style}</span></div>
+              <div class="pill">成長性 <span class="${scoreClass(c.growth)}">${c.growth}</span></div>
+            </div>
+          </div>
+          <div class="section-label">監督キャリア</div>
+          <p>${c.career}</p>
+          <div class="section-label">チームスタイル</div>
+          <p>${c.tactics}</p>
+          <div class="comment"><strong>寸評：</strong>${c.comment}</div>
+        </article>`;
+      }).join("");
+    }
+
+    document.getElementById("filters").addEventListener("click", (e) => {
+      if (e.target.tagName !== "BUTTON") return;
+      document.querySelectorAll("#filters button").forEach(b => b.classList.remove("active"));
+      e.target.classList.add("active");
+      renderCards(e.target.dataset.filter);
+    });
+
+    renderTable();
+    renderCards();
+  </script>
+</body>
+</html>
